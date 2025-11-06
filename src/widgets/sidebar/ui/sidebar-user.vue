@@ -1,5 +1,6 @@
 <template>
   <div class="user">
+    {{ isAuth }}
     <button v-if="!isAuth" class="cta" @click="openLogin">
       <!-- <div class="avatar --guest">
         <Icon name="mdi:account-circle-outline" class="icon" />
@@ -17,8 +18,8 @@
           <Icon v-else name="mdi:account-circle" class="icon" />
         </div>
         <div class="meta">
-          <strong>{{ user.name }}</strong>
-          <small>{{ user.email }}</small>
+          <strong>{{ auth.name }}</strong>
+          <small>{{ auth.email }}</small>
         </div>
         <Icon name="mdi:chevron-down" class="chev" :class="{ open: menuOpen }" />
       </button>
@@ -41,9 +42,12 @@ import { ref, computed } from 'vue'
 import { useModal } from '@/shared/ui/modal/modal-service' // путь без подпапки modal
 import SettingsPanel from '@/pages/main/settings.vue'
 import AuthModal from '@/widgets/auth/auth-modal.vue'
+import { useAuthStore } from '@/entities/auth/model/auth.store'
 
+
+const auth = useAuthStore()
 const user = ref(null)
-user.value = { name: '', email: 'maria@example.com', avatar: '' }
+user.value  = computed(() => auth.user)
 
 const isAuth = computed(() => !!user.value)
 const menuOpen = ref(false)

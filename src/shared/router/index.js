@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const LandingPage  = () => import('@/pages/landing/index.vue')
-const MainLayout   = () => import('@/pages/main/index.vue')
+const LandingPage   = () => import('@/pages/landing/index.vue')
+const MainLayout    = () => import('@/pages/main/index.vue')
 
-const RecipesHome  = () => import('@/widgets/recipe-grid/index.vue')
-const MyRecipesHome  = () => import('@/pages/main/my-recipes.vue')
-const RecipeDetails= () => import('@/entities/recipe/ui/recipe-details.vue')
-const Planner      = () => import('@/pages/main/planner.vue')
-const ShoppingList = () => import('@/pages/main/shopping-list.vue')
-const Settings     = () => import('@/pages/main/settings.vue')
+const RecipesHome   = () => import('@/widgets/recipe-grid/index.vue')
+const MyRecipesHome = () => import('@/pages/main/my-recipes.vue')
+const RecipeDetails = () => import('@/entities/recipe/ui/recipe-details.vue')
+const Planner       = () => import('@/pages/main/planner.vue')
+const ShoppingList  = () => import('@/pages/main/shopping-list.vue')
+const Settings      = () => import('@/pages/main/settings.vue')
 
 // Новые заглушки
 const Blog         = () => import('@/pages/main/blog.vue')
@@ -23,7 +23,7 @@ const routes = [
       { path: '', redirect: { name: 'recipes' } },
       { path: 'recipes', name: 'recipes', component: RecipesHome },
       { path: 'my-recipes', name: 'my-recipes', component: MyRecipesHome },
-      { path: 'recipe/:id', name: 'recipe-details', component: RecipeDetails, props: true },
+      { path: 'recipes/:id', name: 'recipe-details', component: RecipeDetails, props: true },
       { path: 'planner', name: 'planner', component: Planner },
       { path: 'shopping-list', name: 'shopping-list', component: ShoppingList },
       { path: 'settings', name: 'settings', component: Settings },
@@ -34,6 +34,8 @@ const routes = [
   },
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
+
+
 
 const router = createRouter({
   history: createWebHistory(),

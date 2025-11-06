@@ -11,7 +11,7 @@
     </section>
 
     <nav class="side__nav">
-      <SidebarSection :title="'Пользователь'" :links="mainLinks" />
+      <SidebarSection v-if="  isAuth" :title="'Пользователь'" :links="mainLinks" />
       <SidebarSection :title="'Общие'" :links="exploreLinks" />
       <SidebarSection :title="'Поддержка'" :links="supportLinks" class="side__support" />
     </nav>
@@ -30,6 +30,13 @@ import SidebarSection from './ui/sidebar-section.vue'
 import SocialLinks from './ui/social-links.vue'
 import LegalLinks from './ui/legal-links.vue'
 import logo from '@/app/assets/images/logo-edaay.svg'
+
+import { useAuthStore } from '@/entities/auth/model/auth.store'
+import { computed } from 'vue'
+const auth = useAuthStore()
+const isAuth = computed(() => auth.isAuth)
+const user = computed(() => auth.user)
+const logout = () => auth.logout()
 
 const mainLinks = [
   { to: '/app/my-recipes', label: 'Мои рецепты', icon: 'mdi:book-open-page-variant' },

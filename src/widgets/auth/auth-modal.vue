@@ -118,7 +118,9 @@ import { ref, computed } from 'vue'
 import { useModal } from '@/shared/ui/modal/modal-service' // используем сервис, а не локальный Modal
 import { Icon } from '@iconify/vue'
 import logo from '@/app/assets/images/logo-edaay.svg'
+import { useAuthStore } from '@/entities/auth/model/auth.store'
 
+const auth = useAuthStore()
 const { close } = useModal()
 
 const mode = ref('login')
@@ -148,11 +150,23 @@ const validate = () => {
 }
 
 const onSubmit = async () => {
-  if (!validate()) return
+  // if (!validate()) return
+  // loading.value = true
+  // try { await new Promise(r => setTimeout(r, 900)); close() }
+  // catch { error.value = 'Не удалось выполнить действие. Попробуйте ещё раз.' }
+  // finally { loading.value = false }
+
   loading.value = true
-  try { await new Promise(r => setTimeout(r, 900)); close() }
-  catch { error.value = 'Не удалось выполнить действие. Попробуйте ещё раз.' }
-  finally { loading.value = false }
+  error.value = ''
+  try {
+    if (mode.value === 'login') await auth.login({ email: email.value, password: password.value })
+    else await auth.register({ email: email.value, password: password.value })
+    close()
+  } catch (e) {
+    error.value = 'Не удалось выполнить действие'
+  } finally {
+    loading.value = false
+  }
 }
 
 const loginMagic = async () => {
