@@ -3,7 +3,7 @@
     <div class="recipe-card__image">
       <img :src="recipe.image" :alt="recipe.title" loading="lazy" />
       <button class="fav-btn" :class="{ active: recipe.isFavorite }" @click="toggleFav" aria-label="В избранное">
-        <Icon :icon="recipe.isFavorite ? 'mdi:heart' : 'mdi:heart-outline'" class="icon" />
+        <Icon :icon="recipe.isFavorite ? 'mdi:plus' : 'mdi:minus'" class="icon" />
       </button>
     </div>
 
@@ -23,10 +23,10 @@
           {{ recipe.calories }} ккал
         </span>
       </div>
-      <button class="btn btn--primary" @click="$emit('add', recipe)">
+      <!-- <button class="btn btn--primary" @click="$emit('add', recipe)">
         <Icon icon="mdi:plus" class="icon-sm" />
         Добавить
-      </button>
+      </button> -->
     </div>
   </article>
 </template>
@@ -55,14 +55,14 @@ const toggleFav = () => {
 </script>
 
 <style scoped>
-.recipe-card { cursor:pointer; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; background:#fff; transition: box-shadow .2s ease; }
+.recipe-card { cursor:pointer; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; background:#fff; transition: box-shadow .2s ease; position: relative; }
 .recipe-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.06); }
 .recipe-card__image { position:relative; aspect-ratio: 4/3; overflow:hidden; background:#f3f4f6; }
 .recipe-card__image img { width:100%; height:100%; object-fit:cover; }
 .fav-btn { position:absolute; top:8px; right:8px; width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,.9); border:none; display:grid; place-items:center; cursor:pointer; color:#6b7280; }
 .fav-btn.active { color:#ef4444; }
 .fav-btn:hover { background:#fff; }
-.recipe-card__body { padding:12px; display:flex; flex-direction:column; gap:8px; }
+.recipe-card__body { padding:12px; display:flex; flex-direction:column; gap:8px; position: absolute; bottom: 0; background-color: #ffffffd2; width: 100%;}
 .title { margin:0; font-size:16px; line-height:1.3; }
 .meta { display:flex; gap:10px; font-size:13px; color:#6b7280; }
 .meta-item { display:inline-flex; align-items:center; gap:4px; }
