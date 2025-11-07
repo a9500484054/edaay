@@ -3,7 +3,7 @@
     <HeaderBar />
     <main class="container">
       <button class="back-btn" @click="$router.back()">
-        <Icon name="mdi:arrow-left" class="icon" />
+        <Icon icon="mdi:arrow-left" class="icon" />
         Назад к рецептам
       </button>
 
@@ -40,11 +40,11 @@
 
             <div class="actions">
               <button class="btn btn--primary" @click="handleAdd">
-                <Icon name="mdi:plus" class="icon-sm" />
+                <Icon icon="mdi:plus" class="icon-sm" />
                 Добавить в меню
               </button>
               <button class="btn btn--outline" :class="{ active: recipe.isFavorite }" @click="toggleFav">
-                <Icon :name="recipe.isFavorite ? 'mdi:heart' : 'mdi:heart-outline'" class="icon-sm" />
+                <Icon :icon="recipe.isFavorite ? 'mdi:heart' : 'mdi:heart-outline'" class="icon-sm" />
                 {{ recipe.isFavorite ? 'В избранном' : 'В избранное' }}
               </button>
             </div>

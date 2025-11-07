@@ -3,7 +3,7 @@
     {{ isAuth }}
     <button v-if="!isAuth" class="cta" @click="openLogin">
       <!-- <div class="avatar --guest">
-        <Icon name="mdi:account-circle-outline" class="icon" />
+        <Icon icon="mdi:account-circle-outline" class="icon" />
       </div> -->
       <div class="meta">
         <strong>Войти</strong>
@@ -21,7 +21,7 @@
           <strong>{{ auth.name }}</strong>
           <small>{{ auth.email }}</small>
         </div>
-        <Icon name="mdi:chevron-down" class="chev" :class="{ open: menuOpen }" />
+        <Icon icon="mdi:chevron-down" class="chev" :class="{ open: menuOpen }" />
       </button>
 
       <transition name="fade">

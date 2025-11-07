@@ -9,9 +9,8 @@
     <section class="side__user">
       <SidebarUser />
     </section>
-
     <nav class="side__nav">
-      <SidebarSection v-if="  isAuth" :title="'Пользователь'" :links="mainLinks" />
+      <SidebarSection v-if="isAuth" :title="'Пользователь'" :links="mainLinks" />
       <SidebarSection :title="'Общие'" :links="exploreLinks" />
       <SidebarSection :title="'Поддержка'" :links="supportLinks" class="side__support" />
     </nav>

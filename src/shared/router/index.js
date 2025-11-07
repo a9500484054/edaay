@@ -12,6 +12,7 @@ const Settings      = () => import('@/pages/main/settings.vue')
 
 // Новые заглушки
 const Blog         = () => import('@/pages/main/blog.vue')
+const BlogPost     = () => import('@/pages/main/blog-post.vue')
 const Help         = () => import('@/pages/main/help.vue')
 
 const routes = [
@@ -28,6 +29,7 @@ const routes = [
       { path: 'shopping-list', name: 'shopping-list', component: ShoppingList },
       { path: 'settings', name: 'settings', component: Settings },
       { path: 'blog', name: 'blog', component: Blog },
+      { path: 'blog/:id', name: 'blog-post', component: BlogPost},
       { path: 'help', name: 'help', component: Help },
       { path: 'landing', name: 'about', component: LandingPage }, // внутренняя ссылка на публичный лендинг как «О проекте»
     ],

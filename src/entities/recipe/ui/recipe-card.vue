@@ -11,20 +11,20 @@
       <h3 class="title">{{ recipe.title }}</h3>
       <div class="meta">
         <span class="meta-item">
-          <Icon name="mdi:clock-outline" class="icon-sm" />
+          <Icon icon="mdi:clock-outline" class="icon-sm" />
           {{ recipe.time }} мин
         </span>
         <span class="meta-item">
-          <Icon name="mdi:account-outline" class="icon-sm" />
+          <Icon icon="mdi:account-outline" class="icon-sm" />
           {{ recipe.servings }} порц
         </span>
         <span class="meta-item">
-          <Icon name="mdi:fire" class="icon-sm" />
+          <Icon icon="mdi:fire" class="icon-sm" />
           {{ recipe.calories }} ккал
         </span>
       </div>
       <button class="btn btn--primary" @click="$emit('add', recipe)">
-        <Icon name="mdi:plus" class="icon-sm" />
+        <Icon icon="mdi:plus" class="icon-sm" />
         Добавить
       </button>
     </div>

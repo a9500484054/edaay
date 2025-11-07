@@ -39,7 +39,7 @@
               minlength="6"
             />
             <button type="button" class="eye" @click="show = !show" :aria-pressed="show">
-              <Icon :name="show ? 'mdi:eye-off-outline' : 'mdi:eye-outline'" />
+              <Icon :icon="show ? 'mdi:eye-off-outline' : 'mdi:eye-outline'" />
             </button>
           </div>
         </label>
