@@ -7,18 +7,18 @@
     </header>
 
     <section class="side__user">
-      <SidebarUser />
+      <SidebarUser :compact="isTablet" />
     </section>
     <nav class="side__nav">
-      <SidebarSection v-if="isAuth" :title="'Пользователь'" :links="mainLinks" />
+      <SidebarSection :title="'Пользователь'" :links="mainLinks" />
       <SidebarSection :title="'Общие'" :links="exploreLinks" />
       <SidebarSection :title="'Поддержка'" :links="supportLinks" class="side__support" />
     </nav>
 
     <footer class="side__footer">
       <SocialLinks />
-      <LegalLinks />
-      <small>© 2025–2026 ЕдаАУ. Все права защищены</small>
+      <LegalLinks v-if="!isTablet" />
+      <!-- <small v-if="!isTablet">© Все права защищены</small> -->
     </footer>
   </div>
 </template>
@@ -32,10 +32,15 @@ import logo from '@/app/assets/images/logo-edaay.svg'
 
 import { useAuthStore } from '@/entities/auth/model/auth.store'
 import { computed } from 'vue'
+
+import { useBreakpoints } from '@/shared/composables/useBreakpoints'
+
+const { isMobile, isTablet, isDesktop, device } = useBreakpoints()
 const auth = useAuthStore()
 const isAuth = computed(() => auth.isAuth)
 const user = computed(() => auth.user)
 const logout = () => auth.logout()
+
 
 const mainLinks = [
   { to: '/app/my-recipes', label: 'Мои рецепты', icon: 'mdi:book-open-page-variant' },
@@ -60,7 +65,7 @@ const supportLinks = [
 .side__header { display:flex; align-items:center;}
 .side__logo img { height:42px; }
 .side__user { padding: 4px 0 8px; border-bottom:1px solid var(--border); }
-.side__nav { display:flex; flex-direction:column; gap:12px; flex:1; overflow:auto; padding-right:4px; }
+.side__nav { display:flex; flex-direction:column; gap:12px; flex:1; overflow:visible; padding-right:4px; }
 .side__support { margin-top: auto;}
 .side__footer { display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--border); padding-top:12px; }
 </style>

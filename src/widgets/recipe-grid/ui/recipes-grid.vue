@@ -54,5 +54,6 @@ export default {
 
 @media (max-width: 768px) {
   .recipes-grid { grid-template-columns: 1fr !important; }
+
 }
 </style>

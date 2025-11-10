@@ -1,6 +1,5 @@
 <template>
   <div class="page">
-    <HeaderBar />
     <main class="container">
       <button class="back-btn" @click="$router.back()">
         <Icon icon="mdi:arrow-left" class="icon" />

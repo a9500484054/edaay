@@ -1,14 +1,14 @@
 <!-- widgets/sidebar/ui/sidebar-section.vue -->
 <template>
   <section class="section">
-    <div v-if="title" class="section__title">
+    <div v-if="title && !isTablet" class="section__title" >
       <span>{{ title }}</span>
     </div>
 
     <transition name="slide">
       <ul v-show="open" class="section__list">
         <li v-for="item in links" :key="itemKey(item)">
-          <SidebarLink :to="item.to" :label="item.label">
+          <SidebarLink :to="item.to" :label="item.label" :compact="isTablet">
             <template #icon>
               <Icon v-if="item.icon" :icon="item.icon" class="w-5 h-5" />
             </template>
@@ -23,6 +23,8 @@
   import { ref } from 'vue'
   import SidebarLink from './sidebar-link.vue'
   import { Icon } from '@iconify/vue'
+  import { useBreakpoints } from '@/shared/composables/useBreakpoints'
+  const { isMobile, isTablet, isDesktop, device } = useBreakpoints()
 
   const props = defineProps({
     title: { type: String, default: '' },
